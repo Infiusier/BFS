@@ -22,7 +22,7 @@ int isEmpty(struct queue* q);
 void printQueue(struct queue* q);
 struct node* createNode(int v);
 /* Private variables ---------------------------------------------------------*/
-struct node node_buffer[SIZE];
+struct node *node_buffer[SIZE];
 int visited_buffer[SIZE];
 /* Exported functions --------------------------------------------------------*/
 // BFS algorithm
@@ -79,9 +79,9 @@ void createGraph(int vertices, struct Graph* graph) {
   //struct Graph* graph = malloc(sizeof(struct Graph));
   graph->numVertices = vertices;
 
-  graph->adjLists = malloc(vertices * sizeof(struct node*));
+  //graph->adjLists = malloc(vertices * sizeof(struct node*));
   //graph->visited = malloc(vertices * sizeof(int));
-  //graph->adjLists = &node_buffer[0];
+  graph->adjLists = &node_buffer[0];
   graph->visited = &visited_buffer[0];
 
   int i;
