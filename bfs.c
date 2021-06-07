@@ -22,8 +22,10 @@ int isEmpty(struct queue* q);
 void printQueue(struct queue* q);
 struct node* createNode(int v);
 /* Private variables ---------------------------------------------------------*/
-struct node *node_buffer[SIZE];
+struct node *node_pointer_buffer[SIZE];
+struct node node_buffer[SIZE*3];
 int visited_buffer[SIZE];
+int node_count = 0;
 /* Exported functions --------------------------------------------------------*/
 // BFS algorithm
 void bfs(struct Graph* graph, int startVertex, int target, output_t *p_output) {
@@ -44,7 +46,7 @@ void bfs(struct Graph* graph, int startVertex, int target, output_t *p_output) {
     p_output->array[p_output->size] = currentVertex;
 
     if(currentVertex==target){
-    	printf("Target founded: %d\n", currentVertex);
+    	printf("Target found: %d\n", currentVertex);
     	break;
     }
 
@@ -81,7 +83,7 @@ void createGraph(int vertices, struct Graph* graph) {
 
   //graph->adjLists = malloc(vertices * sizeof(struct node*));
   //graph->visited = malloc(vertices * sizeof(int));
-  graph->adjLists = &node_buffer[0];
+  graph->adjLists = &node_pointer_buffer[0];
   graph->visited = &visited_buffer[0];
 
   int i;
@@ -94,7 +96,8 @@ void createGraph(int vertices, struct Graph* graph) {
 /* Private functions --------------------------------------------------------*/
 
 struct node* createNode(int v) {
-  struct node* newNode = malloc(sizeof(struct node));
+  //struct node* newNode = malloc(sizeof(struct node));
+  struct node* newNode = &node_buffer[node_count++];
   newNode->vertex = v;
   newNode->next = NULL;
   return newNode;
