@@ -25,8 +25,7 @@ struct Graph {
 /* Exported functions ------------------------------------------------------ */
 void bfs(struct Graph* graph, int startVertex, int target, output_t *p_output);
 void addEdge(struct Graph* graph, int src, int dest);
-struct Graph* createGraph(int vertices);
-
+void createGraph(int vertices, struct Graph* graph);
 #ifdef UNIT_TESTS
 
 #endif /* UNIT_TESTS */

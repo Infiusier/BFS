@@ -15,19 +15,18 @@ struct queue {
 };
 /* External variables --------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
-void createQueue();
+void createQueue(struct queue *q);
 void enqueue(struct queue* q, int);
 int dequeue(struct queue* q);
 int isEmpty(struct queue* q);
 void printQueue(struct queue* q);
 struct node* createNode(int v);
 /* Private variables ---------------------------------------------------------*/
-static struct queue q;
 /* Exported functions --------------------------------------------------------*/
 // BFS algorithm
 void bfs(struct Graph* graph, int startVertex, int target, output_t *p_output) {
-  
-  createQueue();
+  struct queue q;
+  createQueue(&q);
 
   p_output->size = 0;
 
@@ -74,10 +73,10 @@ void addEdge(struct Graph* graph, int src, int dest) {
   graph->adjLists[dest] = newNode;
 }
 // Creating a graph
-struct Graph* createGraph(int vertices) {
-  struct Graph* graph = malloc(sizeof(struct Graph));
+void createGraph(int vertices, struct Graph* graph) {
+  //struct Graph* graph = malloc(sizeof(struct Graph));
   graph->numVertices = vertices;
-
+  
   graph->adjLists = malloc(vertices * sizeof(struct node*));
   graph->visited = malloc(vertices * sizeof(int));
 
@@ -87,7 +86,6 @@ struct Graph* createGraph(int vertices) {
     graph->visited[i] = 0;
   }
 
-  return graph;
 }
 /* Private functions --------------------------------------------------------*/
 
@@ -99,9 +97,9 @@ struct node* createNode(int v) {
 }
 
 // Create a queue
-void createQueue() {
-  q.front = -1;
-  q.rear = -1;
+void createQueue(struct queue *q) {
+  q->front = -1;
+  q->rear = -1;
 }
 
 // Check if the queue is empty
