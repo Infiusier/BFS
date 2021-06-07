@@ -24,8 +24,10 @@ struct node* createNode(int v);
 /* Private variables ---------------------------------------------------------*/
 /* Exported functions --------------------------------------------------------*/
 // BFS algorithm
-void bfs(struct Graph* graph, int startVertex) {
+void bfs(struct Graph* graph, int startVertex, int target, output_t *p_output) {
   struct queue* q = createQueue();
+
+  p_output->size = 0;
 
   graph->visited[startVertex] = 1;
   enqueue(q, startVertex);
@@ -34,6 +36,14 @@ void bfs(struct Graph* graph, int startVertex) {
     printQueue(q);
     int currentVertex = dequeue(q);
     printf("Visited %d\n", currentVertex);
+
+    p_output->size++;
+    p_output->array[p_output->size] = currentVertex;
+
+    if(currentVertex==target){
+    	printf("Target founded: %d\n", currentVertex);
+    	break;
+    }
 
     struct node* temp = graph->adjLists[currentVertex];
 

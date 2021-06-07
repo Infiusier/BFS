@@ -11,6 +11,10 @@ extern "C" {
 /* Exported macros ----------------------------------------------------------*/
 #define SIZE 40
 /* Exported typedef ---------------------------------------------------------*/
+typedef struct{
+	int array[SIZE];
+	int size;
+}output_t;
 
 struct Graph {
   int numVertices;
@@ -19,7 +23,7 @@ struct Graph {
 };
 /* External variables -------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------ */
-void bfs(struct Graph* graph, int startVertex);
+void bfs(struct Graph* graph, int startVertex, int target, output_t *p_output);
 void addEdge(struct Graph* graph, int src, int dest);
 struct Graph* createGraph(int vertices);
 
