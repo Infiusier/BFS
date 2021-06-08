@@ -9,7 +9,7 @@ extern "C" {
 #include <stdio.h>
 #include <stdlib.h>
 /* Exported macros ----------------------------------------------------------*/
-#define SIZE 125
+#define SIZE 100
 /* Exported typedef ---------------------------------------------------------*/
 typedef struct{
 	int array[SIZE];

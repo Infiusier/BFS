@@ -31,7 +31,6 @@ int node_count = 0;
 void bfs(struct Graph* graph, int startVertex, int target, output_t *p_output) {
   struct queue q;
   createQueue(&q);
-
   p_output->size = 0;
 
   graph->visited[startVertex] = 1;
@@ -42,8 +41,8 @@ void bfs(struct Graph* graph, int startVertex, int target, output_t *p_output) {
     int currentVertex = dequeue(&q);
     printf("Visited %d\n", currentVertex);
 
-    p_output->size++;
     p_output->array[p_output->size] = currentVertex;
+    p_output->size++;
 
     if(currentVertex==target){
     	printf("Target found: %d\n", currentVertex);
