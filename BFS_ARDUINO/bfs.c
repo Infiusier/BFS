@@ -5,11 +5,11 @@
 /* Private macros ------------------------------------------------------------*/
 /* Private typedef -----------------------------------------------------------*/
 struct node {
-  int vertex;
+  uint16_t vertex;
   struct node* next;
 };
 struct queue {
-  int items[SIZE];
+  uint8_t items[SIZE];
   int front;
   int rear;
 };
@@ -37,15 +37,12 @@ void bfs(struct Graph* graph, int startVertex, int target, output_t *p_output) {
   enqueue(&q, startVertex);
 
   while (!isEmpty(&q)) {
-    printQueue(&q);
     int currentVertex = dequeue(&q);
-    printf("Visited %d\n", currentVertex);
 
     p_output->array[p_output->size] = currentVertex;
     p_output->size++;
 
     if(currentVertex==target){
-    	printf("Target found: %d\n", currentVertex);
     	break;
     }
 
@@ -77,11 +74,7 @@ void addEdge(struct Graph* graph, int src, int dest) {
 }
 // Creating a graph
 void createGraph(int vertices, struct Graph* graph) {
-  //struct Graph* graph = malloc(sizeof(struct Graph));
   graph->numVertices = vertices;
-
-  //graph->adjLists = malloc(vertices * sizeof(struct node*));
-  //graph->visited = malloc(vertices * sizeof(int));
   graph->adjLists = &node_pointer_buffer[0];
   graph->visited = &visited_buffer[0];
 
@@ -118,8 +111,10 @@ int isEmpty(struct queue* q) {
 
 // Adding elements into queue
 void enqueue(struct queue* q, int value) {
-  if (q->rear == SIZE - 1)
-    printf("\nQueue is Full!!");
+  if (q->rear == SIZE - 1){
+    return;
+  }
+    
   else {
     if (q->front == -1)
       q->front = 0;
@@ -132,29 +127,13 @@ void enqueue(struct queue* q, int value) {
 int dequeue(struct queue* q) {
   int item;
   if (isEmpty(q)) {
-    printf("Queue is empty");
     item = -1;
   } else {
     item = q->items[q->front];
     q->front++;
     if (q->front > q->rear) {
-      printf("Resetting queue ");
       q->front = q->rear = -1;
     }
   }
   return item;
-}
-
-// Print the queue
-void printQueue(struct queue* q) {
-  int i = q->front;
-
-  if (isEmpty(q)) {
-    printf("Queue is empty");
-  } else {
-    printf("\nQueue contains \n");
-    for (i = q->front; i < q->rear + 1; i++) {
-      printf("%d ", q->items[i]);
-    }
-  }
 }

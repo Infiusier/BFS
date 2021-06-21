@@ -12,7 +12,7 @@ extern "C" {
 #define SIZE 100
 /* Exported typedef ---------------------------------------------------------*/
 typedef struct{
-	int array[SIZE];
+	uint8_t array[SIZE];
 	int size;
 }output_t;
 
