@@ -108,6 +108,7 @@ void loop() {
   bfs(&graph, 0, 999, &output);
 
   for(int i=0; i<output.size; i++){
+    Serial.flush();
     Serial.print(output.array[i]);
     Serial.print(" ");
   }
