@@ -1,3 +1,29 @@
+/**
+ * Apresentacao Geral do Algoritmo: Breadth First Search - Algotitmo de Travessia ou Busca em Grafos.
+ * O Algoritmo Breadth First Search (BFS) e um metodo de travessia ou busca em grafos. Onde a busca pode começar por qualquer vertice do grafo ou da �rvore e vai expandindo para todos os v�rtices adjacentes.
+ *
+ * Copyright 2021 por Hanah Santana de Oliveira dos Santos e Tiago Diogenes de Araujo
+ * Instituto Federal de Educacao, Ciencia e Tecnologia do Ceara - IFCE
+ * Todos os Direitos Reservados.
+ *
+ * Fonte do codigo: https://www.programiz.com/dsa/graph-bfs
+ *
+ * Modo de uso da aplicacao:
+ * Utilizado para se fazer travessia ou busca em grafos, pode servir em aplicacoes como Sistemas de Navegacao (GPS),
+ * Indexacao de Paginas Web em Mecanismos de Pesquisa, Broadcasting e afins.
+ *
+ * Estudantes:
+ * Hanah Santana de Oliveira dos Santos e Tiago Diogenes de Araujo
+ *
+ * Data:
+ * 30 de junho de 2021.
+ *
+ * Contexto:
+ * Este software foi utilizado para fins didaticos na apresentacao de "Trabalho T2 Arduino Uno - Microcontrolador Desenvolvimento de SW Embarcado".
+ *
+ * Plataforma alvo:
+ * Arduino Uno.
+ */
 #include "bfs.h"
 void setup() {
   // put your setup code here, to run once:
