@@ -131,20 +131,14 @@ void loop() {
   addEdge(&graph, 81, 84);
   addEdge(&graph, 85, 84);
 
-  unsigned long time_t = micros();
   bfs(&graph, 0, 999, &output);
-  time_t = micros() - time_t;
 
-  Serial.flush();
-  Serial.print(F("BFS time in microsseconds: "));
-  Serial.print(time_t);
-
-  /*for(int i=0; i<output.size; i++){
+  for(int i=0; i<output.size; i++){
     Serial.flush();
     Serial.print(output.array[i]);
     Serial.print(" ");
   }
-  Serial.println("");*/
+  Serial.println("");
 
 
   while(1){

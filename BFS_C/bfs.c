@@ -91,9 +91,13 @@ void bfs(struct Graph* graph, int startVertex, int target, output_t *p_output) {
 
   while (!isEmpty(&q)) {
     //Adiciona e imprime os vértices observados na fila, remove e indica os que já foram visitados.
-    printQueue(&q);
-    int currentVertex = dequeue(&q);
-    printf("Visited %d\n", currentVertex);
+#ifndef TEST
+	printQueue(&q);
+	int currentVertex = dequeue(&q);
+	printf("Visited %d\n", currentVertex);
+#else
+	int currentVertex = dequeue(&q);
+#endif
 
     p_output->array[p_output->size] = currentVertex;
     p_output->size++;

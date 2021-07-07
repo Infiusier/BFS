@@ -40,8 +40,8 @@
  * Plataforma Linux, posteriormente em Raspberry Pi.
  */
 
-#ifndef BFS_H
-#define BFS_H
+#ifndef MAIN_H
+#define MAIN_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -49,52 +49,13 @@ extern "C" {
 
 /* Includes -----------------------------------------------------------------*/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "main.h"
-
 /* Exported macros ----------------------------------------------------------*/
-
-#define SIZE 100
-
+#define TEST
 /* Exported typedef ---------------------------------------------------------*/
-
-typedef struct{
-	int array[SIZE];
-	int size;
-}output_t;
-
-struct Graph {
-  int numVertices;
-  struct node** adjLists;
-  int* visited;
-};
 
 /* External variables -------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------ */
 
-/**
- * @brief Algoritmo Breadth First Search
- * @param[in] graph ponteiro para a estrutura do grafo.
- * @param[in] startVertex valor do vértice de início.
- * @param[in] target valor do vértice de destino.
-*/
-void bfs(struct Graph* graph, int startVertex, int target, output_t *p_output);
-
-/**
-*@brief Adiciona arestas no grafo entre os vértice fonte e destino.
-*@param[in] graph ponteiro para a estrutura do grafo.
-*@param[in] src vértice fonte.
-*@param[in] dest vértice de destino.
-*/
-void addEdge(struct Graph* graph, int src, int dest);
-
-/**
- * @brief Cria e inicializa o grafo.
- * @param[in] vertices o vértice.
- * @param[in] graph ponteiro para o a estrutura do grafo.
-*/
-void createGraph(int vertices, struct Graph* graph);
 
 #ifdef UNIT_TESTS
 
@@ -105,4 +66,4 @@ void createGraph(int vertices, struct Graph* graph);
 }
 #endif
 
-#endif /* BFS_H */
+#endif /* MAIN_H */

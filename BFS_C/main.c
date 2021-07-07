@@ -24,13 +24,16 @@
  * Plataforma alvo:
  * Plataforma Linux, posteriormente em Raspberry Pi.
 */
+#include "main.h"
 #include "bfs.h"
+#include <time.h>
 
 int main() {
+
 	output_t output;
 	struct Graph graph;
 	createGraph(SIZE,&graph);
-/*
+
 	addEdge(&graph, 0, 6);
 	addEdge(&graph, 0, 3);
 	addEdge(&graph, 0, 2);
@@ -125,7 +128,7 @@ int main() {
 	addEdge(&graph, 86, 85);
 	addEdge(&graph, 81, 84);
 	addEdge(&graph, 85, 84);
-*/
+/*
 	addEdge(&graph,98,99);
     addEdge(&graph,97,98);
     addEdge(&graph,96,97);
@@ -242,8 +245,19 @@ int main() {
 	addEdge(&graph, 0, 3);
 	addEdge(&graph, 0, 2);
 	addEdge(&graph, 0, 1);
-
+*/
+#ifdef TEST
+	clock_t t;
+	t = clock();
 	bfs(&graph, 0, 999, &output);
+	t = clock() - t;
+	double elapsed = (double)t / (double)CLOCKS_PER_SEC;
+	printf("BFS time: %f seconds\n",elapsed);
+
+#else
+	bfs(&graph, 0, 999, &output);
+#endif
+
 	printf("Imprimindo:\n");
 	for(int i=0; i<output.size; i++){
 		printf("%d ",output.array[i]);
@@ -252,3 +266,4 @@ int main() {
 
 	return 0;
 }
+
