@@ -247,11 +247,13 @@ int main() {
 	addEdge(&graph, 0, 1);
 */
 #ifdef TEST
-	clock_t t;
-	t = clock();
+	struct timespec begin, end;
+
+	clock_gettime(CLOCK_MONOTONIC, &begin);
 	bfs(&graph, 0, 999, &output);
-	t = clock() - t;
-	double elapsed = (double)t / (double)CLOCKS_PER_SEC;
+	clock_gettime(CLOCK_MONOTONIC, &end);
+
+	double elapsed = (end.tv_nsec - begin.tv_nsec) / 1000000000.0 + (end.tv_sec  - begin.tv_sec);
 	printf("BFS time: %f seconds\n",elapsed);
 
 #else
